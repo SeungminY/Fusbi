@@ -223,6 +223,14 @@ window.addEventListener('DOMContentLoaded', () => {
         z: getWorldZ(5945) - 0.2,        // 깊이 40cm의 절반인 20cm 아래로 북벽에 딱 밀착
         rotation: Math.PI                // 남향으로 180도 회전
     });
+
+    // 5. 신규 삼성 비스포크 AI 콤보 + 수납함 초기 자동 배치 (발코니2 북동측 구석 수전 자리)
+    addFurnitureToRoom('samsung_combo_laundry', {
+        x: getWorldX(3650 - 343 - 50),   // X = 3257. 동측 외벽에서 약 5cm 마진
+        y: 0,
+        z: getWorldZ(9060 + 393 + 100),  // Z = 9553. 북측 벽면에서 배관 공간 고려 약 10cm 마진
+        rotation: -Math.PI / 2           // 드럼 문과 LCD 콘솔이 발코니 안쪽(서쪽)을 향하도록 회전
+    });
     
     animate();
 });

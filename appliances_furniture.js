@@ -53,6 +53,17 @@ const NEW_CATALOG = [
         height: 2000.0,
         color: '#ffffff',
         type: 'custom_modular_hanger_600'
+    },
+    {
+        id: 'samsung_combo_laundry',
+        name: '삼성 비스포크 AI 콤보 + 수납함',
+        category: 'appliances',
+        icon: 'fa-soap',
+        width: 686.0,
+        depth: 786.0,
+        height: 1491.0,
+        color: '#374151',
+        type: 'custom_samsung_combo'
     }
 ];
 
@@ -392,6 +403,77 @@ function createCustomFurnitureMesh(catalogItem) {
             rod.position.set(0, h - 0.1, 0);
             rod.rotation.z = Math.PI / 2;
             group.add(rod);
+            
+            break;
+        }
+        
+        case 'custom_samsung_combo': {
+            // [삼성 비스포크 AI 콤보 + 하단 수납함]
+            const mainColor = 0x27292d; // 비스포크 다크 그레이 메탈 컬러
+            const glassColor = 0x0f172a; // 드럼 투명 블랙 유리 컬러
+            const screenColor = 0x0284c7; // LCD 디스플레이 하늘색 컬러
+            const chromeColor = 0xc8cbd0; // 크롬 실버 데코 링 컬러
+            
+            const metalMat = new THREE.MeshStandardMaterial({ color: mainColor, roughness: 0.35, metalness: 0.75 });
+            const chromeMat = new THREE.MeshStandardMaterial({ color: chromeColor, roughness: 0.15, metalness: 0.9 });
+            const glassMat = new THREE.MeshStandardMaterial({ color: glassColor, roughness: 0.1, metalness: 0.9, transparent: true, opacity: 0.8 });
+            const screenMat = new THREE.MeshStandardMaterial({ color: screenColor, roughness: 0.1, metalness: 0.8, emissive: 0x0ea5e9, emissiveIntensity: 0.4 });
+            const darkMat = new THREE.MeshStandardMaterial({ color: 0x111315, roughness: 0.5, metalness: 0.2 });
+            
+            // 1. 하단 수납함 (H = 38.1cm)
+            const hSub = 0.381;
+            const subGeo = new THREE.BoxGeometry(w, hSub, d);
+            const subMesh = new THREE.Mesh(subGeo, metalMat);
+            subMesh.position.set(0, hSub / 2, 0);
+            group.add(subMesh);
+            
+            // 수납함 서랍 앞판 및 하부 틈새 선
+            const subDrawerGeo = new THREE.BoxGeometry(w - 0.01, hSub - 0.03, 0.005);
+            const subDrawer = new THREE.Mesh(subDrawerGeo, metalMat);
+            subDrawer.position.set(0, hSub / 2 + 0.005, d/2 + 0.002);
+            group.add(subDrawer);
+            
+            // 2. 세탁기 본체 (H = 1.11m)
+            const hCombo = h - hSub;
+            const bodyGeo = new THREE.BoxGeometry(w, hCombo, d);
+            const bodyMesh = new THREE.Mesh(bodyGeo, metalMat);
+            bodyMesh.position.set(0, hSub + hCombo / 2, 0);
+            group.add(bodyMesh);
+            
+            // 3. 전면 드럼 도어 (유리창)
+            const doorY = hSub + hCombo * 0.45; // 도어 높이 위치
+            const doorZ = d/2 + 0.005;
+            
+            // 외곽 실버 크롬 데코 링
+            const ringGeo = new THREE.CylinderGeometry(0.23, 0.23, 0.015, 32);
+            const ring = new THREE.Mesh(ringGeo, chromeMat);
+            ring.position.set(0, doorY, doorZ);
+            ring.rotation.x = Math.PI / 2;
+            group.add(ring);
+            
+            // 안쪽 투명 블랙 글라스 드럼 창
+            const drumGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.018, 32);
+            const drum = new THREE.Mesh(drumGeo, glassMat);
+            drum.position.set(0, doorY, doorZ + 0.002);
+            drum.rotation.x = Math.PI / 2;
+            group.add(drum);
+            
+            // 4. 상단 터치 조작 콘솔 패널
+            const consoleH = 0.14;
+            const consoleY = h - consoleH / 2 - 0.02;
+            const consoleZ = d/2 + 0.004;
+            
+            const consoleGeo = new THREE.BoxGeometry(w - 0.02, consoleH, 0.008);
+            const consoleMesh = new THREE.Mesh(consoleGeo, darkMat);
+            consoleMesh.position.set(0, consoleY, consoleZ);
+            group.add(consoleMesh);
+            
+            // 5. 177.8mm 터치 LCD 디스플레이 화면
+            const lcdW = 0.22;
+            const lcdH = 0.06;
+            const lcd = new THREE.Mesh(new THREE.BoxGeometry(lcdW, lcdH, 0.01), screenMat);
+            lcd.position.set(0, consoleY, consoleZ + 0.005);
+            group.add(lcd);
             
             break;
         }
