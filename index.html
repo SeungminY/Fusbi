@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 룸 플래너 - 실측 기반 가구/가전 배치 시뮬레이터</title>
+    <!-- 구글 폰트: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 폰트어썸 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 메인 스타일시트 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 헤더 영역 -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-cubes"></i>
+                <h1>Antigravity <span>3D Room Planner</span></h1>
+            </div>
+            <div class="header-actions">
+                <button id="btn-export-json" class="btn btn-secondary">
+                    <i class="fa-solid fa-download"></i> 배치 저장 (JSON)
+                </button>
+                <button id="btn-import-trigger" class="btn btn-secondary">
+                    <i class="fa-solid fa-upload"></i> 배치 불러오기
+                </button>
+                <input type="file" id="input-import-json" accept=".json" style="display: none;">
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 영역 -->
+        <main class="app-body">
+            <!-- 좌측 사이드바: 가구 카탈로그 -->
+            <aside class="sidebar sidebar-left">
+                <div class="section-title">
+                    <i class="fa-solid fa-couch"></i> 가구/가전 카탈로그
+                </div>
+                
+                <!-- 카테고리 탭 -->
+                <div class="catalog-tabs">
+                    <button class="tab-btn active" data-category="living">거실/침실</button>
+                    <button class="tab-btn" data-category="kitchen">주방/욕실</button>
+                    <button class="tab-btn" data-category="appliances">가전</button>
+                </div>
+
+                <!-- 카탈로그 목록 -->
+                <div class="catalog-list" id="catalog-list">
+                    <!-- 카탈로그 항목들이 JavaScript에 의해 동적으로 추가됩니다 -->
+                </div>
+
+                <!-- 조명 강도 설정 -->
+                <div class="room-settings">
+                    <div class="section-sub-title"><i class="fa-solid fa-lightbulb"></i> 조명 강도 설정</div>
+                    <div class="input-group">
+                        <label>전체 조명 (글로벌)</label>
+                        <div class="range-container">
+                            <input type="range" id="light-global" min="0" max="200" value="100">
+                            <span id="light-global-val">100%</span>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 10px;">
+                        <label>거실 조명</label>
+                        <div class="range-container">
+                            <input type="range" id="light-living" min="0" max="200" value="100">
+                            <span id="light-living-val">100%</span>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 10px;">
+                        <label>안방 조명</label>
+                        <div class="range-container">
+                            <input type="range" id="light-bedroom1" min="0" max="200" value="100">
+                            <span id="light-bedroom1-val">100%</span>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 10px;">
+                        <label>드레스룸 조명</label>
+                        <div class="range-container">
+                            <input type="range" id="light-dressroom" min="0" max="200" value="100">
+                            <span id="light-dressroom-val">100%</span>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 10px;">
+                        <label>주방 조명</label>
+                        <div class="range-container">
+                            <input type="range" id="light-kitchen" min="0" max="200" value="100">
+                            <span id="light-kitchen-val">100%</span>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 10px;">
+                        <label>침실2 조명</label>
+                        <div class="range-container">
+                            <input type="range" id="light-bedroom2" min="0" max="200" value="100">
+                            <span id="light-bedroom2-val">100%</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 중앙: 3D 뷰포트 -->
+            <section class="viewport-container">
+                <!-- 뷰 제어 툴바 -->
+                <div class="viewport-toolbar">
+                    <button id="btn-view-3d" class="btn-tool active" title="3D 뷰"><i class="fa-solid fa-cube"></i> 3D</button>
+                    <button id="btn-view-2d" class="btn-tool" title="2D 탑뷰"><i class="fa-solid fa-map"></i> 2D 평면도</button>
+                    <button id="btn-bedroom2-dimensions" class="btn-tool" title="침실2 실측치수 표시"><i class="fa-solid fa-ruler-combined"></i> 실측 치수</button>
+                    <button id="btn-reset-camera" class="btn-tool" title="카메라 초기화"><i class="fa-solid fa-camera-rotate"></i></button>
+                    <button id="btn-clear-scene" class="btn-tool btn-danger-tool" title="전체 삭제"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <!-- 3D 캔버스 영역 -->
+                <div id="canvas-container">
+                    <!-- 배경 이미지 오버레이 (실제 사진 매칭용) -->
+                    <div id="background-photo-overlay"></div>
+                    <!-- 방 이름 2D 라벨 오버레이 컨테이너 -->
+                    <div id="room-labels-container"></div>
+                </div>
+
+                <!-- 도움말 / 정보 오버레이 -->
+                <div class="help-overlay">
+                    <p><i class="fa-solid fa-info-circle"></i> 가구를 마우스로 선택 후 드래그하여 이동할 수 있습니다. 3D 뷰에서 마우스 우클릭으로 화면 이동, 좌클릭으로 화면 회전이 가능합니다.</p>
+                </div>
+            </section>
+
+            <!-- 우측 사이드바: 속성 편집 및 실사/재질 설정 -->
+            <aside class="sidebar sidebar-right">
+                <!-- 1. 선택된 객체 속성 수정 -->
+                <div class="panel-section" id="properties-panel">
+                    <div class="section-title">
+                        <i class="fa-solid fa-sliders"></i> 선택한 가구 설정
+                    </div>
+                    <div class="no-selection-msg">
+                        가구를 클릭하면 세부 설정을 변경할 수 있습니다.
+                    </div>
+                    <div class="selection-controls" style="display: none;">
+                        <h4 id="selected-name">선택된 가구</h4>
+                        
+                        <div class="input-group">
+                            <label>가로 크기 (mm)</label>
+                            <input type="number" id="selected-width" step="10">
+                            <select id="selected-width-select" style="display: none;">
+                                <option value="1200">1200</option>
+                                <option value="1400">1400</option>
+                                <option value="1600">1600</option>
+                                <option value="1800">1800</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>세로 크기 (mm)</label>
+                            <input type="number" id="selected-depth" step="10">
+                        </div>
+                        <div class="input-group">
+                            <label>높이 크기 (mm)</label>
+                            <input type="number" id="selected-height" step="10">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>회전 각도 (도)</label>
+                            <div class="range-container">
+                                <input type="range" id="selected-rotation" min="0" max="360" value="0">
+                                <span id="rotation-val">0°</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>높이 위치 (mm)</label>
+                            <input type="number" id="selected-pos-y" step="10" value="0">
+                        </div>
+
+                        <div class="input-group" id="group-furniture-color">
+                            <label>가구 색상</label>
+                            <div class="color-picker-container">
+                                <input type="color" id="selected-color" value="#ffffff">
+                            </div>
+                        </div>
+
+                        <!-- 모션데스크 전용 색상 조합 설정 -->
+                        <div class="input-group" id="group-desk-colors" style="display: none;">
+                            <label>상판 색상 (선택)</label>
+                            <select id="selected-desk-top-color" style="margin-bottom: 10px;">
+                                <option value="white_oak">화이트 상판 + 오크 옆면</option>
+                                <option value="black_oak">블랙 상판 + 오크 옆면</option>
+                                <option value="all_oak">올 오크</option>
+                                <option value="all_white">올 화이트</option>
+                                <option value="all_black">올 블랙</option>
+                            </select>
+                            <label>다리 프레임 색상 (선택)</label>
+                            <select id="selected-desk-frame-color">
+                                <option value="#f8fafc">화이트</option>
+                                <option value="#1a1a1a">블랙</option>
+                            </select>
+                        </div>
+
+                        <button id="btn-delete-selected" class="btn btn-danger btn-full">
+                            <i class="fa-solid fa-trash"></i> 선택된 가구 삭제
+                        </button>
+                    </div>
+                </div>
+
+            </aside>
+        </main>
+    </div>
+
+    <!-- Three.js 및 OrbitControls 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- 신규 가구/가전 모듈 로드 -->
+    <script src="appliances_furniture.js?v=20260702_39"></script>
+    <!-- 애플리케이션 핵심 로직 스크립트 (캐시 완전 방지를 위한 파일명 변경) -->
+    <script src="app_v2.js?v=20260702_39"></script>
+</body>
+</html>

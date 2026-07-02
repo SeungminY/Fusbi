@@ -1,0 +1,716 @@
+/* 
+   3D 룸 플래너 스타일시트
+   디자인 시스템: 다크 모드, 글래스모피즘(Glassmorphism), 인디고 포인트 컬러
+*/
+
+:root {
+    --bg-main: #0f0f13;
+    --bg-sidebar: rgba(22, 22, 28, 0.85);
+    --bg-card: rgba(30, 30, 38, 0.6);
+    --bg-card-hover: rgba(45, 45, 58, 0.8);
+    --color-text: #f1f5f9;
+    --color-text-muted: #94a3b8;
+    --color-primary: #6366f1; /* 메인 인디고 */
+    --color-primary-hover: #4f46e5;
+    --color-accent: #06b6d4; /* 시안 보조 */
+    --color-danger: #ef4444; /* 삭제용 레드 */
+    --color-danger-hover: #dc2626;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-focus: rgba(99, 102, 241, 0.5);
+    --font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+    --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-blur: blur(12px);
+}
+
+/* 기본 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-family);
+    background-color: var(--bg-main);
+    color: var(--color-text);
+}
+
+/* 메인 레이아웃 */
+#app {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* 헤더 스타일 */
+.app-header {
+    height: 60px;
+    background-color: rgba(15, 15, 19, 0.9);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 100;
+    backdrop-filter: var(--glass-blur);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo i {
+    font-size: 24px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.logo h1 span {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-text-muted);
+    margin-left: 8px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* 버튼 공통 */
+.btn {
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-color);
+    color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+    color: var(--color-danger);
+}
+
+.btn-danger:hover {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.text-center {
+    justify-content: center;
+}
+
+/* 메인 바디 영역 */
+.app-body {
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 사이드바 공통 */
+.sidebar {
+    width: 300px;
+    background-color: var(--bg-sidebar);
+    backdrop-filter: var(--glass-blur);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.sidebar-right {
+    border-right: none;
+    border-left: 1px solid var(--border-color);
+}
+
+/* 섹션 타이틀 */
+.section-title {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text);
+}
+
+.section-title i {
+    color: var(--color-primary);
+}
+
+.section-sub-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-text-muted);
+}
+
+/* 좌측 사이드바: 탭 영역 */
+.catalog-tabs {
+    display: flex;
+    padding: 10px;
+    gap: 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-size: 12px;
+    color: var(--color-text-muted);
+    padding: 8px 4px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.tab-btn:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--color-text);
+}
+
+.tab-btn.active {
+    background-color: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    font-weight: 600;
+}
+
+/* 카탈로그 리스트 */
+.catalog-list {
+    flex: 1;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    align-content: start;
+    overflow-y: auto;
+}
+
+.catalog-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    user-select: none;
+}
+
+.catalog-item:hover {
+    background-color: var(--bg-card-hover);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+}
+
+.catalog-item i {
+    font-size: 28px;
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+}
+
+.catalog-item:hover i {
+    color: var(--color-primary);
+}
+
+.catalog-item span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.catalog-item small {
+    font-size: 10px;
+    color: var(--color-text-muted);
+}
+
+/* 방 설정 컨테이너 */
+.room-settings {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(10, 10, 15, 0.4);
+}
+
+/* 폼 요소 공통 */
+.input-group {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.input-group input[type="number"],
+.input-group input[type="text"],
+.input-group select {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    color: var(--color-text);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: var(--font-family);
+    font-size: 13px;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+
+.input-group input[type="number"]:focus,
+.input-group input[type="text"]:focus,
+.input-group select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.input-group-row {
+    display: flex;
+    gap: 8px;
+}
+
+.input-group-row .input-group {
+    flex: 1;
+}
+
+/* 중앙 뷰포트 영역 */
+.viewport-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#canvas-container {
+    flex: 1;
+    position: relative;
+    background: linear-gradient(to bottom, #e0f2fe 0%, #f8fafc 100%);
+    overflow: hidden;
+}
+
+/* 실제 방 사진 배경 오버레이 */
+#background-photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    pointer-events: none; /* 클릭 이벤트를 통과시켜 3D 조작 가능 */
+    z-index: 1;
+    display: none;
+}
+
+/* Three.js 캔버스 요소가 투명 배경 사진 위에 그려지도록 설정 */
+#canvas-container canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* 배경 위에 3D 캔버스가 오도록 설정 (투명 씬 설정 필수) */
+}
+
+/* 뷰포트 툴바 */
+.viewport-toolbar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 50;
+    display: flex;
+    gap: 6px;
+    background-color: rgba(15, 15, 19, 0.7);
+    backdrop-filter: var(--glass-blur);
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.btn-tool {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn-tool:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--color-text);
+}
+
+.btn-tool.active {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-danger-tool:hover {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: var(--color-danger);
+}
+
+/* 도움말 오버레이 */
+.help-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 50;
+    background-color: rgba(15, 15, 19, 0.7);
+    backdrop-filter: var(--glass-blur);
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    pointer-events: none;
+    text-align: center;
+}
+
+.help-overlay p {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.help-overlay p i {
+    color: var(--color-primary);
+}
+
+/* 우측 사이드바: 패널 섹션 */
+.panel-section {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.no-selection-msg {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 24px 0;
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.selection-controls h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #a5b4fc;
+}
+
+/* 레인지 슬라이더 커스텀 */
+.range-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.range-container input[type="range"] {
+    flex: 1;
+    accent-color: var(--color-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.range-container span {
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 35px;
+    text-align: right;
+}
+
+/* 컬러 피커 커스텀 */
+.color-picker-container {
+    height: 36px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.color-picker-container input[type="color"] {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 120%;
+    height: 120%;
+    border: none;
+    cursor: pointer;
+}
+
+/* 파일 업로드 디자인 */
+.upload-container {
+    width: 100%;
+}
+
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.upload-box:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+.upload-box i {
+    font-size: 24px;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+}
+
+.upload-box span {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.upload-box small {
+    font-size: 9px;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.bg-controls {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+/* 벽지 및 바닥재 프리셋 아이템 */
+.texture-presets {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.preset-item {
+    flex: 1;
+    height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #121214;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.preset-item:hover {
+    transform: scale(1.05);
+}
+
+.preset-item.active {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+    transform: scale(1.03);
+}
+
+.custom-texture-upload {
+    margin-top: 6px;
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* 방 이름 2D 라벨 오버레이 스타일 */
+#room-labels-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.room-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: rgba(15, 15, 19, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    color: #cbd5e1;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    pointer-events: auto; /* 클릭 가능하도록 허용 */
+    cursor: pointer;     /* 손가락 포인터로 변경 */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.room-label:hover {
+    background: rgba(99, 102, 241, 0.95);
+    color: #ffffff;
+    border-color: var(--color-accent);
+    transform: translate(-50%, -50%) scale(1.08) translateY(-2px);
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.5);
+}
+
+.room-label::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* 외부 치수 라벨 스타일 (2D CAD 도면 풍) */
+.dimension-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: #0f172a;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+}
+
+/* 침실2 전용 3D 실측 치수 가이드 라벨 스타일 */
+.bedroom2-dim-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: #0284c7; /* 화려한 네온 스카이블루 베이스 */
+    border: 1px solid #38bdf8;
+    color: #ffffff;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    pointer-events: none;
+    transition: opacity 0.1s;
+    box-shadow: 0 4px 10px rgba(14, 165, 233, 0.4);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    z-index: 20;
+}
+
+
