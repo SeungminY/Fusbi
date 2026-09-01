@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesla Model Y 완벽 비교 & 실구매가 계산기 | 경기도 의왕시 공식 보조금 반영</title>
+    <title>Tesla Model Y 완벽 비교 & 실구매가 계산기 | 경기도 의왕시 실시간 보조금 현황</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome 아이콘 -->
@@ -62,6 +62,13 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+        @keyframes pulse-fast {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .animate-pulse-fast {
+            animation: pulse-fast 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen pb-28">
@@ -75,11 +82,11 @@
             <div>
                 <h1 class="text-base lg:text-lg font-bold tracking-tight text-white flex items-center gap-2">
                     Tesla Model Y 가이드
-                    <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
-                        <i class="fa-solid fa-location-dot"></i> 경기도 의왕시 실측
+                    <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse-fast"></span> 의왕시 잔여 115대 (마감 임박)
                     </span>
                 </h1>
-                <p class="text-xs text-zinc-400 hidden sm:block">공식 스펙 · 옵션 가격 · 무공해차 통합누리집 보조금 100% 반영</p>
+                <p class="text-xs text-zinc-400 hidden sm:block">환경부 무공해차 통합누리집 실시간 잔여 연동 & 맞춤 견적기</p>
             </div>
         </div>
 
@@ -98,19 +105,61 @@
     </header>
 
     <!-- 메인 컨테이너 -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-10">
 
-        <!-- 1. 히어로 섹션 & 트림 3종 핵심 요약 카드 -->
+        <!-- 🚨 의왕시 실시간 보조금 잔여 현황 모니터링 배너 (무공해차 누리집 연동) -->
+        <section class="bg-gradient-to-r from-zinc-900 via-amber-950/40 to-zinc-900 border-2 border-amber-500/60 rounded-3xl p-5 sm:p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <!-- 좌측 상태 브리핑 -->
+                <div class="space-y-2 max-w-2xl">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-md text-xs font-extrabold bg-amber-500 text-black flex items-center gap-1 shadow">
+                            <i class="fa-solid fa-triangle-exclamation"></i> 마감 임박 경고
+                        </span>
+                        <span class="text-xs font-bold text-white">경기도 의왕시 전기승용 보조금 현황</span>
+                        <span class="text-[11px] text-zinc-400">접수방식: <strong>출고등록순</strong></span>
+                    </div>
+                    <h2 class="text-lg sm:text-2xl font-black text-white tracking-tight">
+                        일반 개인 잔여 <span class="text-amber-400 underline decoration-amber-500/50 underline-offset-4">단 115대</span> 남음 (예산 83% 소진)
+                    </h2>
+                    <p class="text-xs text-zinc-300 leading-relaxed">
+                        의왕시는 계약 시점이 아닌 <strong>'실제 차량 출고·등록 시점'</strong>에 보조금이 확정됩니다. 테슬라 대기 기간 중 보조금이 소진될 수 있으니 실시간 잔여량을 상시 확인하세요.
+                    </p>
+                </div>
+
+                <!-- 우측 게이지 & 누리집 바로가기 액션 -->
+                <div class="w-full lg:w-80 bg-zinc-950/90 border border-zinc-800 p-4 rounded-2xl space-y-3 shrink-0">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-zinc-400">2026 공고 661대 중</span>
+                        <span class="font-black text-amber-400">546대 선정 완료 (83%)</span>
+                    </div>
+                    <!-- 프로그레스 바 -->
+                    <div class="w-full h-3 rounded-full bg-zinc-800 overflow-hidden relative">
+                        <div class="h-full bg-gradient-to-r from-amber-500 to-red-500 rounded-full transition-all duration-500" style="width: 83%"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-[11px] text-zinc-400 pt-1">
+                        <span>우선/법인/택시: <strong class="text-red-400">마감</strong></span>
+                        <span>일반 잔여: <strong class="text-emerald-400 text-xs">115대</strong></span>
+                    </div>
+                    <!-- 실시간 공식 누리집 확인 링크 -->
+                    <a href="https://ev.or.kr/nportal/buySupprt/initSubsidyPaymentCheckAction.do" target="_blank" class="w-full py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition group shadow">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-amber-400 group-hover:translate-x-0.5 transition"></i>
+                        <span>무공해차 누리집 실시간 확인</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. 트림 3종 핵심 요약 카드 -->
         <section>
             <div class="text-center max-w-3xl mx-auto mb-8">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold mb-3">
-                    <i class="fa-solid fa-circle-check"></i> 환경부 무공해차 통합누리집(ev.or.kr) 의왕시 보조금 정합 완료
-                </div>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
                     나에게 딱 맞는 <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400">Model Y</span> 선택하기
                 </h2>
-                <p class="mt-2.5 text-sm sm:text-base text-zinc-400">
-                    테슬라 코리아 공식 출고가와 경기도 의왕시 지자체 보조금을 대조하여 실구매가를 확인하세요.
+                <p class="mt-2 text-sm sm:text-base text-zinc-400">
+                    테슬라 코리아 공식 출고가와 의왕시 실측 보조금(-255만~-322만)을 즉시 비교합니다.
                 </p>
             </div>
 
@@ -427,19 +476,19 @@
                     </div>
 
                     <!-- 6. 보조금 지원 상세 (경기도 의왕시 공식 실측 데이터 적용) -->
-                    <div class="bg-zinc-900 border border-emerald-500/40 rounded-2xl p-5 relative overflow-hidden">
-                        <div class="flex items-center justify-between mb-3">
+                    <div class="bg-zinc-900 border border-emerald-500/40 rounded-2xl p-5 relative overflow-hidden space-y-4">
+                        <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <label class="text-xs font-bold uppercase text-white tracking-wider">6. 보조금 적용 지역: 경기도 의왕시</label>
+                                <label class="text-xs font-bold uppercase text-white tracking-wider">6. 보조금 현황 (경기도 의왕시)</label>
                             </div>
                             <span class="text-[11px] text-emerald-400 font-semibold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-700/50">
-                                무공해차 통합누리집 공식 실측치
+                                환경부 누리집(ev.or.kr) 실측치
                             </span>
                         </div>
 
                         <!-- 의왕시 실측 보조금 대조표 -->
-                        <div class="grid grid-cols-3 gap-2 text-center p-3 rounded-xl bg-zinc-950 border border-zinc-800 text-xs mb-3">
+                        <div class="grid grid-cols-3 gap-2 text-center p-3 rounded-xl bg-zinc-950 border border-zinc-800 text-xs">
                             <div class="p-2 rounded-lg bg-zinc-900/80">
                                 <div class="text-[11px] text-zinc-400">국비 지원금</div>
                                 <div id="subsidy-national" class="text-sm font-bold text-white mt-1">170만 원</div>
@@ -454,6 +503,23 @@
                             </div>
                         </div>
 
+                        <!-- ⚠️ 보조금 소진(0원) 대비 시뮬레이션 토글 스위치 -->
+                        <div class="p-3.5 rounded-xl bg-zinc-950/90 border border-amber-500/40 flex items-center justify-between">
+                            <div class="flex items-center gap-2.5">
+                                <i class="fa-solid fa-clock-rotate-left text-amber-400 text-base"></i>
+                                <div>
+                                    <div class="text-xs font-bold text-white flex items-center gap-1.5">
+                                        <span>보조금 조기 마감(소진) 대비 시뮬레이션</span>
+                                    </div>
+                                    <div class="text-[11px] text-zinc-400">출고 전 115대 소진 시 (보조금 0원 적용)</div>
+                                </div>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="toggle-exhausted" onchange="calculateTotal()" class="sr-only peer">
+                                <div class="w-11 h-6 bg-zinc-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
+                            </label>
+                        </div>
+
                         <!-- 전환지원금 토글 옵션 -->
                         <label class="flex items-center justify-between p-3 rounded-xl bg-zinc-950/90 border border-zinc-800 cursor-pointer hover:border-zinc-600 transition">
                             <div class="flex items-center gap-3">
@@ -463,13 +529,13 @@
                                         <span>노후 경유차/내연기관 전환지원금 대상</span>
                                         <span class="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">추가 할인</span>
                                     </div>
-                                    <div class="text-[11px] text-zinc-400 mt-0.5">내연기관차 폐차 후 전기차 전환 구매 시 추가 지원금 지원</div>
+                                    <div class="text-[11px] text-zinc-400 mt-0.5">내연기관차 폐차 후 전기차 전환 구매 시 추가 지원금</div>
                                 </div>
                             </div>
                             <span id="label-transition-amount" class="text-xs font-bold text-amber-400">+44만 원 추가 차감</span>
                         </label>
 
-                        <div class="mt-3 flex items-center justify-between text-xs text-zinc-400 bg-zinc-950/60 p-2.5 rounded-lg border border-zinc-800">
+                        <div class="flex items-center justify-between text-xs text-zinc-400 bg-zinc-950/60 p-2.5 rounded-lg border border-zinc-800">
                             <span>전기차 취득세 감면 혜택 (최대 140만 원)</span>
                             <span class="font-bold text-emerald-400">자동 적용</span>
                         </div>
@@ -525,7 +591,7 @@
                                 <span id="price-autopilot" class="font-medium text-zinc-300">0 원</span>
                             </div>
                             <div class="flex justify-between items-center text-emerald-400 border-t border-dashed border-zinc-800 pt-2 font-medium">
-                                <span>경기도 의왕시 기본 보조금</span>
+                                <span id="label-subsidy-status">경기도 의왕시 기본 보조금</span>
                                 <span id="price-subsidy">-2,550,000 원</span>
                             </div>
                             <div id="row-transition-subsidy" class="flex justify-between items-center text-amber-400 font-medium hidden">
@@ -540,7 +606,7 @@
 
                         <!-- 최종 실구매 예상가 -->
                         <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
-                            <div class="text-xs text-zinc-400">의왕시 보조금 적용 후 최종 실구매가</div>
+                            <div id="label-final-price-title" class="text-xs text-zinc-400">의왕시 보조금 적용 후 최종 실구매가</div>
                             <div class="flex items-baseline justify-between mt-1">
                                 <span id="price-final" class="text-3xl font-black text-white tracking-tight">47,440,000</span>
                                 <span class="text-sm font-bold text-zinc-400">원</span>
@@ -720,7 +786,7 @@
                 <span id="bottom-trim-label" class="text-xs font-bold text-white">Model Y RWD</span>
                 <div class="text-lg sm:text-xl font-black text-red-500" id="bottom-price-label">47,440,000 원</div>
             </div>
-            <span class="text-[11px] text-emerald-400 font-semibold hidden sm:inline">(의왕시 보조금 -255만 원 적용가)</span>
+            <span id="bottom-subsidy-desc" class="text-[11px] text-emerald-400 font-semibold hidden sm:inline">(의왕시 보조금 -255만 원 적용가)</span>
         </div>
         <div class="flex items-center gap-2">
             <a href="#simulator" class="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-black font-bold text-xs transition">
@@ -881,22 +947,25 @@
             const basePrice = trimData.basePrice;
             const optionPrice = currentColor.price + currentWheel.price + currentInterior.price + currentAutopilot.price;
             
+            // 보조금 소진(0원) 시뮬레이션 여부
+            const isExhausted = document.getElementById('toggle-exhausted').checked;
+            
             // 의왕시 보조금 계산
             const subsidyInfo = trimData.subsidy;
-            const baseSubsidy = subsidyInfo.total;
+            const baseSubsidy = isExhausted ? 0 : subsidyInfo.total;
             
             // 전환지원금 적용 여부
             const isTransition = document.getElementById('check-transition-subsidy').checked;
-            const transitionAmount = isTransition ? subsidyInfo.transition : 0;
+            const transitionAmount = (!isExhausted && isTransition) ? subsidyInfo.transition : 0;
             const totalSubsidyDeduction = baseSubsidy + transitionAmount;
 
             const finalPrice = basePrice + optionPrice - totalSubsidyDeduction;
 
             // 의왕시 상세 박스 수치 갱신
-            document.getElementById('subsidy-national').innerText = (subsidyInfo.national / 10000).toLocaleString() + '만 원';
-            document.getElementById('subsidy-local').innerText = (subsidyInfo.local / 10000).toLocaleString() + '만 원';
-            document.getElementById('subsidy-total').innerText = (subsidyInfo.total / 10000).toLocaleString() + '만 원';
-            document.getElementById('label-transition-amount').innerText = '+' + (subsidyInfo.transition / 10000).toLocaleString() + '만 원 추가 차감';
+            document.getElementById('subsidy-national').innerText = isExhausted ? '0 원 (마감)' : (subsidyInfo.national / 10000).toLocaleString() + '만 원';
+            document.getElementById('subsidy-local').innerText = isExhausted ? '0 원 (마감)' : (subsidyInfo.local / 10000).toLocaleString() + '만 원';
+            document.getElementById('subsidy-total').innerText = isExhausted ? '0 원 (소진)' : (subsidyInfo.total / 10000).toLocaleString() + '만 원';
+            document.getElementById('label-transition-amount').innerText = isExhausted ? '보조금 소진 시 미지원' : '+' + (subsidyInfo.transition / 10000).toLocaleString() + '만 원 추가 차감';
 
             // UI 업데이트
             document.getElementById('summary-trim-name').innerText = trimData.fullName;
@@ -912,21 +981,35 @@
             document.getElementById('price-interior').innerText = currentInterior.price === 0 ? '0 원' : '+' + formatKRW(currentInterior.price);
             document.getElementById('price-autopilot').innerText = currentAutopilot.price === 0 ? '0 원' : '+' + formatKRW(currentAutopilot.price);
             
-            document.getElementById('price-subsidy').innerText = '-' + formatKRW(baseSubsidy);
+            const labelSubsidyStatus = document.getElementById('label-subsidy-status');
+            const priceSubsidyEl = document.getElementById('price-subsidy');
+            if (isExhausted) {
+                labelSubsidyStatus.innerText = '의왕시 보조금 (소진/마감)';
+                labelSubsidyStatus.className = 'text-zinc-500 line-through';
+                priceSubsidyEl.innerText = '0 원';
+                priceSubsidyEl.className = 'text-zinc-500 font-bold';
+            } else {
+                labelSubsidyStatus.innerText = '경기도 의왕시 기본 보조금';
+                labelSubsidyStatus.className = 'text-emerald-400 font-medium';
+                priceSubsidyEl.innerText = '-' + formatKRW(baseSubsidy);
+                priceSubsidyEl.className = 'text-emerald-400 font-bold';
+            }
             
             const transitionRow = document.getElementById('row-transition-subsidy');
-            if (isTransition) {
+            if (isTransition && !isExhausted) {
                 transitionRow.classList.remove('hidden');
                 document.getElementById('price-transition-subsidy').innerText = '-' + formatKRW(transitionAmount);
             } else {
                 transitionRow.classList.add('hidden');
             }
 
+            document.getElementById('label-final-price-title').innerText = isExhausted ? '보조금 소진 시 최종 출고가' : '의왕시 보조금 적용 후 최종 실구매가';
             document.getElementById('price-final').innerText = finalPrice.toLocaleString('ko-KR');
 
             // 하단 고정 바 업데이트
             document.getElementById('bottom-trim-label').innerText = trimData.name;
             document.getElementById('bottom-price-label').innerText = formatKRW(finalPrice);
+            document.getElementById('bottom-subsidy-desc').innerText = isExhausted ? '(보조금 소진 시 정가 기준)' : '(의왕시 보조금 -' + (baseSubsidy/10000).toLocaleString() + '만 원 적용가)';
 
             // 60개월 예상 월 할부금 (선수금 1,000만원, 연 4.9% 원리금균등상환 근사치)
             const loanPrincipal = Math.max(0, finalPrice - 10000000);
