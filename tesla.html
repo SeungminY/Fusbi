@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesla Model Y 공식 견적기 | 테슬라 공식 홈페이지 100% 일치 (스텔스그레이 기본 0원 / 크로스플로 휠)</title>
+    <title>Tesla Model Y 공식 견적기 | 테슬라 공식 홈페이지 100% 일치 (스텔스그레이 · FSD 월 15만 구독)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome 아이콘 -->
@@ -83,10 +83,10 @@
                 <h1 class="text-base lg:text-lg font-bold tracking-tight text-white flex items-center gap-2">
                     Tesla Model Y 디자인 스튜디오
                     <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
-                        <i class="fa-solid fa-circle-check"></i> 공식 옵션 100% 일치
+                        <i class="fa-solid fa-circle-check"></i> 공식 옵션 100% 정합
                     </span>
                 </h1>
-                <p class="text-xs text-zinc-400 hidden sm:block">스텔스그레이 기본(0원) · 19인치 크로스플로 휠 · 의왕시 보조금 연동</p>
+                <p class="text-xs text-zinc-400 hidden sm:block">스텔스그레이 기본(0원) · 19인치 크로스플로 휠 · FSD 월 15만원 구독</p>
             </div>
         </div>
 
@@ -380,34 +380,28 @@
                             <span class="text-[11px] font-bold text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded border border-zinc-700">공식 순서</span>
                         </div>
                         
-                        <!-- 테슬라 공식 컬러 6종 (스텔스 그레이 기본 0원!) -->
+                        <!-- 테슬라 공식 컬러 6종 -->
                         <div class="flex flex-wrap gap-4 pt-1">
-                            <!-- 1. 스텔스 그레이 (기본 0원) -->
                             <button type="button" onclick="setColor('stealth', 'Stealth Grey', 0, '#383b40')" class="color-btn flex flex-col items-center gap-1.5 group">
                                 <span class="w-8 h-8 rounded-full bg-[#383b40] border border-zinc-500 color-dot active shadow-md" id="dot-stealth"></span>
                                 <span class="text-[11px] font-bold text-emerald-400">스텔스그레이 (포함)</span>
                             </button>
-                            <!-- 2. 펄 화이트 멀티코트 (+128.6만) -->
                             <button type="button" onclick="setColor('white', 'Pearl White Multi-Coat', 1286000, '#f8fafc')" class="color-btn flex flex-col items-center gap-1.5 group">
                                 <span class="w-8 h-8 rounded-full bg-white border border-zinc-400 color-dot shadow-md" id="dot-white"></span>
                                 <span class="text-[11px] text-zinc-400 group-hover:text-white">화이트 (+128.6만)</span>
                             </button>
-                            <!-- 3. 솔리드 블랙 (+128.6만) -->
                             <button type="button" onclick="setColor('black', 'Solid Black', 1286000, '#111113')" class="color-btn flex flex-col items-center gap-1.5 group">
                                 <span class="w-8 h-8 rounded-full bg-neutral-900 border border-zinc-600 color-dot shadow-md" id="dot-black"></span>
                                 <span class="text-[11px] text-zinc-400 group-hover:text-white">블랙 (+128.6만)</span>
                             </button>
-                            <!-- 4. 딥 블루 메탈릭 (+128.6만) -->
                             <button type="button" onclick="setColor('blue', 'Deep Blue Metallic', 1286000, '#1e3a8a')" class="color-btn flex flex-col items-center gap-1.5 group">
                                 <span class="w-8 h-8 rounded-full bg-blue-900 border border-zinc-600 color-dot shadow-md" id="dot-blue"></span>
                                 <span class="text-[11px] text-zinc-400 group-hover:text-white">블루 (+128.6만)</span>
                             </button>
-                            <!-- 5. 울트라 레드 (+257.1만) -->
                             <button type="button" onclick="setColor('red', 'Ultra Red', 2571000, '#b91c1c')" class="color-btn flex flex-col items-center gap-1.5 group">
                                 <span class="w-8 h-8 rounded-full bg-red-700 border border-zinc-600 color-dot shadow-md" id="dot-red"></span>
                                 <span class="text-[11px] text-zinc-400 group-hover:text-white">울트라레드 (+257.1만)</span>
                             </button>
-                            <!-- 6. 퀵실버 (+257.1만) -->
                             <button type="button" onclick="setColor('quicksilver', 'Quicksilver', 2571000, '#9ca3af')" class="color-btn flex flex-col items-center gap-1.5 group">
                                 <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-400 via-zinc-200 to-slate-400 border border-zinc-300 color-dot shadow-md" id="dot-quicksilver"></span>
                                 <span class="text-[11px] text-zinc-400 group-hover:text-white">퀵실버 (+257.1만)</span>
@@ -470,37 +464,63 @@
 
                     </div>
 
-                    <!-- 5. 자율주행 패키지 (Autopilot / FSD) -->
-                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
-                        <label class="text-xs font-bold uppercase text-zinc-400 tracking-wider block mb-3">5. 오토파일럿 & 자율주행 옵션</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <button type="button" onclick="setAutopilot('basic', '기본 오토파일럿', 0)" id="btn-ap-basic" class="ap-btn p-3.5 rounded-xl border border-red-500 bg-zinc-800 text-left transition active flex flex-col justify-between">
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs font-bold text-white">기본 오토파일럿</span>
-                                        <span class="text-[11px] font-semibold text-emerald-400">포함 (0원)</span>
+                    <!-- 5. 🤖 오토파일럿 패키지 (공식 홈페이지 100% 동일: 유럽 안전기준 적용) -->
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <label class="text-xs font-bold uppercase text-zinc-400 tracking-wider">5. 오토파일럿 패키지</label>
+                                <div class="text-[11px] text-zinc-500">유럽 안전기준 적용</div>
+                            </div>
+                            <span class="text-[11px] font-bold text-purple-400 bg-purple-950/60 px-2 py-0.5 rounded border border-purple-800/40">FSD 월 구독 도입</span>
+                        </div>
+
+                        <!-- 3종 오토파일럿 패키지 카드 -->
+                        <div class="space-y-3 pt-1">
+                            
+                            <!-- 1. 기본 오토파일럿 (포함 0원) -->
+                            <button type="button" onclick="setAutopilot('basic', '오토파일럿', 0, 0)" id="btn-ap-basic" class="ap-btn w-full p-4 rounded-2xl border border-red-500 bg-zinc-800 text-left transition active block">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-bold text-white">오토파일럿</span>
+                                    <span class="text-xs font-extrabold text-emerald-400">포함 (0원)</span>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+                                    오토스티어 및 트래픽 어웨어 크루즈 컨트롤이 포함 되어 있습니다.
+                                </p>
+                            </button>
+
+                            <!-- 2. 향상된 오토파일럿 (₩4,522,000) -->
+                            <button type="button" onclick="setAutopilot('eap', '향상된 오토파일럿', 4522000, 0)" id="btn-ap-eap" class="ap-btn w-full p-4 rounded-2xl border border-zinc-700 bg-zinc-900/80 text-left transition hover:border-zinc-500 block">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-bold text-white">향상된 오토파일럿</span>
+                                    <span class="text-xs font-extrabold text-blue-400">₩4,522,000</span>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+                                    기본 오토파일럿 기능에 더해, 운전자가 요청할 경우 내비게이트 온 오토스티어, 자동 차선 변경, 자동 주차, 간단 차량 호출, 향상된 스마트 차량 호출 기능이 포함됩니다.
+                                </p>
+                            </button>
+
+                            <!-- 3. FSD(감독형) 월 구독 (₩150,000 /월) -->
+                            <button type="button" onclick="setAutopilot('fsd_sub', 'FSD(감독형) 월 구독', 0, 150000)" id="btn-ap-fsd_sub" class="ap-btn w-full p-4 rounded-2xl border border-zinc-700 bg-zinc-900/80 text-left transition hover:border-purple-500 block relative overflow-hidden">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm font-bold text-white">FSD(감독형) 월 구독</span>
+                                        <span class="text-[10px] font-bold px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">월 구독형</span>
                                     </div>
-                                    <p class="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">차선 유지 보조 및 어댑티브 크루즈 컨트롤 기본 탑재</p>
+                                    <span class="text-xs font-black text-purple-400">₩150,000 /월</span>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+                                    향상된 오토파일럿기능을 포함하며, 향후 업데이트를 통해 차량이 최소한의 운전자 개입으로 거의 모든 도로에서 스스로 주행할 수 있도록 지원할 예정입니다.
+                                </p>
+                                <div class="mt-2 text-[10px] text-zinc-500 border-t border-zinc-800/60 pt-1.5">
+                                    * 차량 출고가에 0원 추가되며, 출고 후 원할 때만 월 단위(15만원/월)로 구독/해지 가능합니다.
                                 </div>
                             </button>
-                            <button type="button" onclick="setAutopilot('eap', '향상된 오토파일럿 (EAP)', 4522000)" id="btn-ap-eap" class="ap-btn p-3.5 rounded-xl border border-zinc-700 text-left transition flex flex-col justify-between">
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs font-bold text-white">향상된 오토파일럿 (EAP)</span>
-                                        <span class="text-[11px] font-bold text-blue-400">+452.2만</span>
-                                    </div>
-                                    <p class="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">고속도로 자동 차선 변경, 내비게이트 온 오토파일럿, 자동 주차 & 호출</p>
-                                </div>
-                            </button>
-                            <button type="button" onclick="setAutopilot('fsd', '풀 셀프 드라이빙 (FSD)', 9043000)" id="btn-ap-fsd" class="ap-btn p-3.5 rounded-xl border border-zinc-700 text-left transition flex flex-col justify-between">
-                                <div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs font-bold text-white">풀 셀프 드라이빙 (FSD)</span>
-                                        <span class="text-[11px] font-bold text-purple-400">+904.3만</span>
-                                    </div>
-                                    <p class="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">EAP 모든 기능 + 교통 신호 및 정지 표지판 인식 제어, 도심 자동조향 준비</p>
-                                </div>
-                            </button>
+
+                        </div>
+
+                        <div class="text-[10px] text-zinc-500 leading-relaxed bg-zinc-950 p-2.5 rounded-xl border border-zinc-800">
+                            • 풀 셀프 드라이빙(감독형)은 모든 차량에 적용되는 기능이 아니며, 일부 대상 차량에 한하여 적용됩니다.<br>
+                            • 현재 제공되는 기능은 운전자의 적극적인 주의를 필요로 하며, 차량을 자율주행차로 전환하지는 않습니다.
                         </div>
                     </div>
 
@@ -599,7 +619,7 @@
                                 <span class="text-[11px] font-black text-white/90 tracking-wider">MODEL Y</span>
                             </div>
                             <div class="mt-4 flex items-center gap-2 text-xs text-zinc-300">
-                                <span id="summary-color-tag" class="px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 text-[11px]">Stealth Grey (포함)</span>
+                                <span id="summary-color-tag" class="px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 text-[11px]">Stealth Grey</span>
                                 <span id="summary-wheel-tag" class="px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 text-[11px]">19인치 크로스플로</span>
                                 <span id="summary-interior-tag" class="px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 text-[11px]">All Black</span>
                             </div>
@@ -612,7 +632,7 @@
                                 <span id="price-base" class="font-bold text-white">49,990,000 원</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-zinc-400">외장 색상 옵션</span>
+                                <span class="text-zinc-400">외부 색상 (Paint)</span>
                                 <span id="price-color" class="font-medium text-zinc-300">0 원 (Stealth Grey 포함)</span>
                             </div>
                             <div class="flex justify-between items-center">
@@ -624,8 +644,12 @@
                                 <span id="price-interior" class="font-medium text-zinc-300">0 원</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-zinc-400">자율주행 (오토파일럿)</span>
+                                <span class="text-zinc-400" id="label-summary-ap-title">오토파일럿 패키지</span>
                                 <span id="price-autopilot" class="font-medium text-zinc-300">0 원</span>
+                            </div>
+                            <div id="row-fsd-sub" class="flex justify-between items-center text-purple-400 font-bold hidden">
+                                <span>FSD(감독형) 월 구독료</span>
+                                <span>150,000 원 /월</span>
                             </div>
                             <div class="flex justify-between items-center text-emerald-400 border-t border-dashed border-zinc-800 pt-2 font-medium">
                                 <span id="label-subsidy-status">경기도 의왕시 기본 보조금</span>
@@ -643,7 +667,7 @@
 
                         <!-- 최종 실구매 예상가 -->
                         <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
-                            <div id="label-final-price-title" class="text-xs text-zinc-400">최종 실구매 예상가</div>
+                            <div id="label-final-price-title" class="text-xs text-zinc-400">최종 실구매 예상가 (일시불 기준)</div>
                             <div class="flex items-baseline justify-between mt-1">
                                 <span id="price-final" class="text-3xl font-black text-white tracking-tight">47,440,000</span>
                                 <span class="text-sm font-bold text-zinc-400">원</span>
@@ -802,6 +826,10 @@
                                 <span>총 대출 이자 (기간 합계)</span>
                                 <span id="res-fin-total-interest" class="font-semibold text-zinc-300">약 287만 원</span>
                             </div>
+                            <div id="row-fin-fsd-sub" class="flex justify-between text-purple-400 font-bold border-t border-dashed border-zinc-800 pt-1.5 hidden">
+                                <span>FSD(감독형) 월 구독 추가</span>
+                                <span>+150,000 원 /월</span>
+                            </div>
                         </div>
                     </div>
 
@@ -811,80 +839,6 @@
                     </div>
                 </div>
 
-            </div>
-        </section>
-
-        <!-- 4. 전 차종 상세 제원 및 보조금 vs 테조금 비교표 -->
-        <section class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-6 sm:p-8">
-            <div class="mb-6">
-                <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-table-list text-blue-400"></i>
-                    모델 Y 3종 공식 스펙 & 보조금/테조금 대조표
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 mt-1">지자체 보조금과 테슬라 자체 지원 프로그램(테조금)을 대조하여 최악의 마감 상황에서도 실구매가를 분석합니다.</p>
-            </div>
-
-            <div class="overflow-x-auto custom-scrollbar">
-                <table class="w-full text-xs sm:text-sm text-left text-zinc-300 min-w-[650px]">
-                    <thead class="bg-zinc-950 text-zinc-400 font-bold uppercase tracking-wider text-[11px] border-b border-zinc-800">
-                        <tr>
-                            <th class="py-3 px-4">구분 / 항목</th>
-                            <th class="py-3 px-4 text-white">Model Y Premium (RWD)</th>
-                            <th class="py-3 px-4 text-red-400">Model Y Premium Long Range (AWD)</th>
-                            <th class="py-3 px-4 text-amber-400">Model Y L (6인승 AWD)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-zinc-800/80">
-                        <tr class="hover:bg-zinc-800/40">
-                            <td class="py-3 px-4 font-semibold text-zinc-400">기본 출고 가격</td>
-                            <td class="py-3 px-4 font-extrabold text-white">4,999만 원</td>
-                            <td class="py-3 px-4 font-extrabold text-red-400">6,699만 원</td>
-                            <td class="py-3 px-4 font-extrabold text-amber-400">7,299만 원</td>
-                        </tr>
-                        <tr class="hover:bg-zinc-800/40">
-                            <td class="py-3 px-4 font-semibold text-zinc-400">기본 포함 외장 색상</td>
-                            <td class="py-3 px-4 text-emerald-400 font-bold">Stealth Grey (0원 포함)</td>
-                            <td class="py-3 px-4 text-emerald-400 font-bold">Stealth Grey (0원 포함)</td>
-                            <td class="py-3 px-4 text-emerald-400 font-bold">Stealth Grey (0원 포함)</td>
-                        </tr>
-                        <tr class="hover:bg-zinc-800/40">
-                            <td class="py-3 px-4 font-semibold text-zinc-400">기본 포함 휠 사양</td>
-                            <td class="py-3 px-4 text-white font-bold">19인치 크로스플로 휠 (포함)</td>
-                            <td class="py-3 px-4 text-white font-bold">19인치 크로스플로 휠 (포함)</td>
-                            <td class="py-3 px-4 text-white font-bold">19인치 크로스플로 휠 (포함)</td>
-                        </tr>
-                        <tr class="bg-emerald-950/30 hover:bg-emerald-950/50">
-                            <td class="py-3 px-4 font-bold text-emerald-400">의왕시 총 보조금 (국+시비)</td>
-                            <td class="py-3 px-4 font-black text-emerald-400">255만 원 (국170+시85)</td>
-                            <td class="py-3 px-4 font-black text-emerald-400">315만 원 (국210+시105)</td>
-                            <td class="py-3 px-4 font-black text-emerald-400">322만 원 (국215+시107)</td>
-                        </tr>
-                        <tr class="bg-emerald-950/60 hover:bg-emerald-950/80">
-                            <td class="py-3.5 px-4 font-black text-emerald-300">의왕시 보조금 적용 실구매가</td>
-                            <td class="py-3.5 px-4 font-black text-blue-400 text-base">4,744만 원</td>
-                            <td class="py-3.5 px-4 font-black text-red-400 text-base">6,384만 원</td>
-                            <td class="py-3.5 px-4 font-black text-amber-400 text-base">6,977만 원</td>
-                        </tr>
-                        <tr class="bg-red-950/30 hover:bg-red-950/50">
-                            <td class="py-3 px-4 font-bold text-red-400">⚡ 테조금 (테슬라 자체 지원액)</td>
-                            <td class="py-3 px-4 font-black text-red-400">-170만 원 (국비 전액)</td>
-                            <td class="py-3 px-4 font-black text-red-400">-210만 원 (국비 전액)</td>
-                            <td class="py-3 px-4 font-black text-red-400">-215만 원 (국비 전액)</td>
-                        </tr>
-                        <tr class="bg-red-950/60 hover:bg-red-950/80">
-                            <td class="py-3.5 px-4 font-black text-red-300">⚡ 테조금 적용 시 최종 실구매가</td>
-                            <td class="py-3.5 px-4 font-black text-white text-base">4,829만 원</td>
-                            <td class="py-3.5 px-4 font-black text-white text-base">6,489만 원</td>
-                            <td class="py-3.5 px-4 font-black text-white text-base">7,084만 원</td>
-                        </tr>
-                        <tr class="hover:bg-zinc-800/40">
-                            <td class="py-3 px-4 font-semibold text-zinc-400">보조금 마감 시 실질 차액 부담</td>
-                            <td class="py-3 px-4 font-bold text-amber-400">+85만 원 (시비 부분만)</td>
-                            <td class="py-3 px-4 font-bold text-amber-400">+105만 원 (시비 부분만)</td>
-                            <td class="py-3 px-4 font-bold text-amber-400">+107만 원 (시비 부분만)</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
 
@@ -969,13 +923,13 @@
             }
         };
 
-        // 상태값 관리 (스텔스 그레이 기본 0원!)
+        // 상태값 관리 (스텔스그레이 0원, 크로스플로 0원, 기본 오토파일럿 0원)
         let currentTrim = 'rwd';
-        let currentSubsidyMode = 'uiwang'; // 'uiwang' | 'teslagrant' | 'none'
+        let currentSubsidyMode = 'uiwang';
         let currentColor = { id: 'stealth', name: 'Stealth Grey', price: 0, hex: '#383b40' };
         let currentWheel = { id: '19crossflow', name: '19인치 크로스플로 휠', price: 0 };
         let currentInterior = { id: 'black', name: 'All Black 인테리어', price: 0 };
-        let currentAutopilot = { id: 'basic', name: '기본 오토파일럿', price: 0 };
+        let currentAutopilot = { id: 'basic', name: '오토파일럿', price: 0, monthlySub: 0 };
 
         // 금융 시뮬레이터 상태값
         let currentFinanceCompany = 'samsung';
@@ -1074,17 +1028,21 @@
             calculateTotal();
         }
 
-        // 오토파일럿 선택
-        function setAutopilot(id, name, price) {
-            currentAutopilot = { id, name, price };
+        // 오토파일럿 패키지 선택 (FSD 월 구독형 15만원 / EAP 452.2만원 / 기본 포함)
+        function setAutopilot(id, name, price, monthlySub) {
+            currentAutopilot = { id, name, price, monthlySub };
             document.querySelectorAll('.ap-btn').forEach(btn => {
-                btn.classList.remove('border-red-500', 'bg-zinc-800', 'active');
+                btn.classList.remove('border-red-500', 'bg-zinc-800', 'border-purple-500', 'bg-purple-950/20', 'active');
                 btn.classList.add('border-zinc-700');
             });
             const activeBtn = document.getElementById('btn-ap-' + id);
             if (activeBtn) {
                 activeBtn.classList.remove('border-zinc-700');
-                activeBtn.classList.add('border-red-500', 'bg-zinc-800', 'active');
+                if (id === 'fsd_sub') {
+                    activeBtn.classList.add('border-purple-500', 'bg-purple-950/30', 'active');
+                } else {
+                    activeBtn.classList.add('border-red-500', 'bg-zinc-800', 'active');
+                }
             }
             calculateTotal();
         }
@@ -1161,7 +1119,15 @@
             document.getElementById('price-base').innerText = formatKRW(basePrice);
             document.getElementById('price-color').innerText = currentColor.price === 0 ? '0 원 (Stealth Grey 포함)' : '+' + formatKRW(currentColor.price);
             document.getElementById('price-interior').innerText = currentInterior.price === 0 ? '0 원' : '+' + formatKRW(currentInterior.price);
-            document.getElementById('price-autopilot').innerText = currentAutopilot.price === 0 ? '0 원' : '+' + formatKRW(currentAutopilot.price);
+            
+            // 오토파일럿 패키지 요약 표기
+            if (currentAutopilot.id === 'fsd_sub') {
+                document.getElementById('price-autopilot').innerText = '0 원 (차량가 미합산)';
+                document.getElementById('row-fsd-sub').classList.remove('hidden');
+            } else {
+                document.getElementById('price-autopilot').innerText = currentAutopilot.price === 0 ? '0 원 (기본 포함)' : '+' + formatKRW(currentAutopilot.price);
+                document.getElementById('row-fsd-sub').classList.add('hidden');
+            }
             
             const labelSubsidyStatus = document.getElementById('label-subsidy-status');
             const priceSubsidyEl = document.getElementById('price-subsidy');
@@ -1303,6 +1269,10 @@
                 totalInterest = (monthlyPayment * months) - loanPrincipal;
             }
 
+            // FSD 월 구독료 합산 표기
+            const fsdMonthly = currentAutopilot.monthlySub || 0;
+            const finalMonthly = monthlyPayment + fsdMonthly;
+
             document.getElementById('label-downpayment-val').innerText = downpayment.toLocaleString('ko-KR');
             document.getElementById('label-downpayment-cashback').innerText = currentFinanceCompany === 'samsung' ? '선수금 1% 캐시백: +' + cashbackAmount.toLocaleString('ko-KR') + ' 원 지급' : '우리금융: 이벤트별 상이';
             document.getElementById('label-max-cash').innerText = '최대 (' + (carPrice/10000).toLocaleString() + '만 원)';
@@ -1322,19 +1292,27 @@
 
             document.getElementById('res-fin-total-interest').innerText = isCash ? '0 원' : '약 ' + (Math.round(totalInterest/10000)).toLocaleString() + '만 원 (' + totalInterest.toLocaleString('ko-KR') + ' 원)';
 
+            const fsdRow = document.getElementById('row-fin-fsd-sub');
+            if (fsdMonthly > 0) {
+                fsdRow.classList.remove('hidden');
+            } else {
+                fsdRow.classList.add('hidden');
+            }
+
             if (isCash) {
                 document.getElementById('res-monthly-title').innerText = '전액 일시납 결제 (캐시백 즉시 지급)';
-                document.getElementById('res-monthly-payment').innerText = formatKRW(carPrice - (currentFinanceCompany === 'samsung' ? cashbackAmount : 0));
+                document.getElementById('res-monthly-payment').innerText = formatKRW(carPrice - (currentFinanceCompany === 'samsung' ? cashbackAmount : 0)) + (fsdMonthly > 0 ? ' (+월 15만 FSD)' : '');
             } else {
-                document.getElementById('res-monthly-title').innerText = currentFinanceMonths + '개월 월 예상 납부금 (원리금 균등)';
-                document.getElementById('res-monthly-payment').innerText = monthlyPayment.toLocaleString('ko-KR') + ' 원';
+                document.getElementById('res-monthly-title').innerText = currentFinanceMonths + '개월 월 예상 납부금 (원리금 균등' + (fsdMonthly > 0 ? ' + FSD 월 구독' : '') + ')';
+                document.getElementById('res-monthly-payment').innerText = finalMonthly.toLocaleString('ko-KR') + ' 원/월';
             }
         }
 
-        // 초기 실행: 스텔스 그레이 기본 선택
+        // 초기 실행: 스텔스 그레이 & 기본 오토파일럿
         window.addEventListener('DOMContentLoaded', () => {
             setTrim('rwd');
             setColor('stealth', 'Stealth Grey', 0, '#383b40');
+            setAutopilot('basic', '오토파일럿', 0, 0);
         });
     </script>
 </body>
