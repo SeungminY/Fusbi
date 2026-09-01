@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Model Y 완벽 비교 & 실구매가 계산기 | Model Y · Long Range · Y L</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Pretendard 폰트 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        tesla: {
+                            red: '#E82127',
+                            dark: '#111113',
+                            card: '#18181b',
+                            cardHover: '#222226',
+                            border: '#27272a',
+                            subtext: '#a1a1aa'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #0b0b0d;
+            color: #f4f4f5;
+            -webkit-font-smoothing: antialiased;
+        }
+        .color-dot {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .color-dot.active {
+            box-shadow: 0 0 0 3px #0b0b0d, 0 0 0 5px #3b82f6;
+            transform: scale(1.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #18181b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 3px;
+        }
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .trim-card.active {
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-28">
+
+    <!-- 상단 네비게이션 바 -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-zinc-800/80 px-4 lg:px-8 py-3.5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center font-black text-white text-lg tracking-tighter shadow-lg shadow-red-600/30">
+                T
+            </div>
+            <div>
+                <h1 class="text-base lg:text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                    Tesla Model Y 가이드
+                    <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30">2026 최신</span>
+                </h1>
+                <p class="text-xs text-zinc-400 hidden sm:block">공식 스펙 · 옵션 가격 · 실구매가 & 보조금 시뮬레이터</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+            <!-- 3D 룸플래너 바로가기 링크 -->
+            <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 bg-zinc-800/90 hover:bg-zinc-700 rounded-lg border border-zinc-700 transition">
+                <i class="fa-solid fa-cube text-indigo-400"></i>
+                <span class="hidden sm:inline">3D 룸 플래너</span>
+                <span class="sm:hidden">3D 방</span>
+            </a>
+            <a href="#simulator" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-black bg-white hover:bg-zinc-200 rounded-lg shadow transition">
+                <i class="fa-solid fa-calculator"></i>
+                <span>견적 계산기</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 메인 컨테이너 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
+
+        <!-- 1. 히어로 섹션 & 트림 3종 핵심 요약 카드 -->
+        <section>
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    나에게 딱 맞는 <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400">Model Y</span> 선택하기
+                </h2>
+                <p class="mt-2.5 text-sm sm:text-base text-zinc-400">
+                    실제 테슬라 코리아 공식 홈페이지 판매 가격 및 제원을 기반으로 3개 라인업을 비교합니다.
+                </p>
+            </div>
+
+            <!-- 트림 3종 카드 그리드 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <!-- Model Y RWD -->
+                <div class="bg-zinc-900/90 border border-zinc-800 rounded-2xl p-6 relative flex flex-col justify-between hover:border-zinc-600 transition shadow-xl group">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                                실속 & 가성비
+                            </span>
+                            <span class="text-xs text-zinc-500 font-medium">후륜구동 (RWD)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition">Model Y</h3>
+                        <div class="mt-2 flex items-baseline gap-1">
+                            <span class="text-2xl sm:text-3xl font-extrabold text-white">4,999</span>
+                            <span class="text-sm font-semibold text-zinc-400">만 원</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-1">보조금 100% 지급 구간 · LFP 배터리</p>
+
+                        <!-- 주요 스펙 칩 -->
+                        <div class="grid grid-cols-3 gap-2 py-4 my-4 border-y border-zinc-800/80 text-center">
+                            <div>
+                                <div class="text-xs text-zinc-500">주행거리</div>
+                                <div class="text-sm font-bold text-white mt-0.5">400 km</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-500">제로백</div>
+                                <div class="text-sm font-bold text-white mt-0.5">6.9 초</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-500">최고속도</div>
+                                <div class="text-sm font-bold text-white mt-0.5">217 km/h</div>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-2 text-xs text-zinc-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 배터리 용량: 62.1 kWh (LFP)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 100% 상시 완충 부담 없는 배터리</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 15인치 센터 디스플레이 & 글래스 루프</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 국고+지자체 보조금 혜택 최대</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectTrimPreset('rwd')" class="mt-6 w-full py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-semibold text-xs transition flex items-center justify-center gap-2">
+                        <span>이 트림으로 견적 내기</span>
+                        <i class="fa-solid fa-arrow-right text-zinc-400"></i>
+                    </button>
+                </div>
+
+                <!-- Model Y Long Range -->
+                <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/90 border-2 border-red-500/80 rounded-2xl p-6 relative flex flex-col justify-between shadow-2xl shadow-red-950/20 group">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-[11px] font-extrabold px-3 py-0.5 rounded-full shadow">
+                        가장 인기 있는 추천 모델
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-3 mt-1">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20">
+                                장거리 & 듀얼모터
+                            </span>
+                            <span class="text-xs text-zinc-500 font-medium">상시 사륜구동 (AWD)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-red-400 transition">Model Y Long Range</h3>
+                        <div class="mt-2 flex items-baseline gap-1">
+                            <span class="text-2xl sm:text-3xl font-extrabold text-white">6,699</span>
+                            <span class="text-sm font-semibold text-zinc-400">만 원</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-1">최대 505km 주행 · 삼원계(NCM) 배터리</p>
+
+                        <!-- 주요 스펙 칩 -->
+                        <div class="grid grid-cols-3 gap-2 py-4 my-4 border-y border-zinc-800/80 text-center">
+                            <div>
+                                <div class="text-xs text-zinc-500">주행거리</div>
+                                <div class="text-sm font-bold text-red-400 mt-0.5">505 km</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-500">제로백</div>
+                                <div class="text-sm font-bold text-white mt-0.5">5.0 초</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-500">최고속도</div>
+                                <div class="text-sm font-bold text-white mt-0.5">217 km/h</div>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-2 text-xs text-zinc-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 배터리 용량: 84.0 kWh (NCM)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 겨울철 저온 주행거리 보존 탁월</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 듀얼 모터 전천후 빗길/눈길 트랙션 제어</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 프리미엄 오디오 시스템 (13스피커+서브우퍼)</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectTrimPreset('longrange')" class="mt-6 w-full py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs transition shadow-lg shadow-red-600/30 flex items-center justify-center gap-2">
+                        <span>이 트림으로 견적 내기</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Model Y L (6인승) -->
+                <div class="bg-zinc-900/90 border border-zinc-800 rounded-2xl p-6 relative flex flex-col justify-between hover:border-zinc-600 transition shadow-xl group">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                6인승 패밀리 플래그십
+                            </span>
+                            <span class="text-xs text-zinc-500 font-medium">상시 사륜구동 (AWD)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition">Model Y L</h3>
+                        <div class="mt-2 flex items-baseline gap-1">
+                            <span class="text-2xl sm:text-3xl font-extrabold text-white">7,299</span>
+                            <span class="text-sm font-semibold text-zinc-400">만 원</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-1">2+2+2 독립 캡틴 시트 · 프리미엄 거주성</p>
+
+                        <!-- 주요 스펙 칩 -->
+                        <div class="grid grid-cols-3 gap-2 py-4 my-4 border-y border-zinc-800/80 text-center">
+                            <div>
+                                <div class="text-xs text-zinc-500">주행거리</div>
+                                <div class="text-sm font-bold text-white mt-0.5">485 km</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-500">제로백</div>
+                                <div class="text-sm font-bold text-white mt-0.5">5.0 초</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-zinc-500">탑승인원</div>
+                                <div class="text-sm font-bold text-amber-400 mt-0.5">6 인승</div>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-2 text-xs text-zinc-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 배터리 용량: 84.0 kWh (NCM)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 2열 독립형 통로 & 캡틴 리클라이닝 시트</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 3열 폴딩 시 대용량 평탄화 적재 공간</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 다자녀 및 패밀리 전용 특화 구성</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectTrimPreset('yl')" class="mt-6 w-full py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-semibold text-xs transition flex items-center justify-center gap-2">
+                        <span>이 트림으로 견적 내기</span>
+                        <i class="fa-solid fa-arrow-right text-zinc-400"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. 나만의 테슬라 견적 계산기 & 비주얼 옵션 선택기 -->
+        <section id="simulator" class="scroll-mt-20">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-red-500"></i>
+                        실시간 견적 & 옵션 시뮬레이터
+                    </h3>
+                    <p class="text-xs sm:text-sm text-zinc-400">트림, 색상, 휠, 인테리어, 자율주행 패키지 및 거주지 보조금을 선택하면 실구매가가 즉시 계산됩니다.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- 좌측: 비주얼 인터랙티브 옵션 선택 영역 (7칸) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- 차종 트림 선택 -->
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                        <label class="text-xs font-bold uppercase text-zinc-400 tracking-wider block mb-3">1. 모델 트림 선택</label>
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <button type="button" onclick="setTrim('rwd')" id="btn-trim-rwd" class="trim-btn p-3 rounded-xl border border-red-500 bg-zinc-800 text-left transition hover:border-zinc-500 active">
+                                <div class="text-xs font-semibold text-zinc-400">후륜구동</div>
+                                <div class="text-sm font-bold text-white mt-0.5">Model Y</div>
+                                <div class="text-xs font-bold text-blue-400 mt-1">4,999만 원</div>
+                            </button>
+                            <button type="button" onclick="setTrim('longrange')" id="btn-trim-longrange" class="trim-btn p-3 rounded-xl border border-zinc-700 text-left transition hover:border-zinc-500">
+                                <div class="text-xs font-semibold text-zinc-400">롱레인지 AWD</div>
+                                <div class="text-sm font-bold text-white mt-0.5">Long Range</div>
+                                <div class="text-xs font-bold text-red-400 mt-1">6,699만 원</div>
+                            </button>
+                            <button type="button" onclick="setTrim('yl')" id="btn-trim-yl" class="trim-btn p-3 rounded-xl border border-zinc-700 text-left transition hover:border-zinc-500">
+                                <div class="text-xs font-semibold text-zinc-400">6인승 AWD</div>
+                                <div class="text-sm font-bold text-white mt-0.5">Model Y L</div>
+                                <div class="text-xs font-bold text-amber-400 mt-1">7,299만 원</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 외장 색상 선택 -->
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="text-xs font-bold uppercase text-zinc-400 tracking-wider">2. 외장 색상 (Paint)</label>
+                            <span id="label-selected-color" class="text-xs font-bold text-white">펄 화이트 멀티코트 (기본 포함)</span>
+                        </div>
+                        
+                        <!-- 컬러 동그라미 선택기 -->
+                        <div class="flex flex-wrap gap-4 pt-1">
+                            <button type="button" onclick="setColor('white', '펄 화이트 멀티코트', 0, '#ffffff')" class="color-btn flex flex-col items-center gap-1.5 group">
+                                <span class="w-8 h-8 rounded-full bg-white border border-zinc-400 color-dot active shadow-md" id="dot-white"></span>
+                                <span class="text-[11px] text-zinc-400 group-hover:text-white">화이트 (0원)</span>
+                            </button>
+                            <button type="button" onclick="setColor('black', '솔리드 블랙', 1286000, '#151515')" class="color-btn flex flex-col items-center gap-1.5 group">
+                                <span class="w-8 h-8 rounded-full bg-neutral-900 border border-zinc-600 color-dot shadow-md" id="dot-black"></span>
+                                <span class="text-[11px] text-zinc-400 group-hover:text-white">블랙 (+128.6만)</span>
+                            </button>
+                            <button type="button" onclick="setColor('blue', '딥 블루 메탈릭', 1286000, '#1e3a8a')" class="color-btn flex flex-col items-center gap-1.5 group">
+                                <span class="w-8 h-8 rounded-full bg-blue-900 border border-zinc-600 color-dot shadow-md" id="dot-blue"></span>
+                                <span class="text-[11px] text-zinc-400 group-hover:text-white">블루 (+128.6만)</span>
+                            </button>
+                            <button type="button" onclick="setColor('stealth', '스텔스 그레이', 1929000, '#4b5563')" class="color-btn flex flex-col items-center gap-1.5 group">
+                                <span class="w-8 h-8 rounded-full bg-zinc-600 border border-zinc-500 color-dot shadow-md" id="dot-stealth"></span>
+                                <span class="text-[11px] text-zinc-400 group-hover:text-white">스텔스그레이 (+192.9만)</span>
+                            </button>
+                            <button type="button" onclick="setColor('quicksilver', '퀵실버 (Quicksilver)', 2571000, '#9ca3af')" class="color-btn flex flex-col items-center gap-1.5 group">
+                                <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-400 via-zinc-200 to-slate-400 border border-zinc-300 color-dot shadow-md" id="dot-quicksilver"></span>
+                                <span class="text-[11px] text-zinc-400 group-hover:text-white">퀵실버 (+257.1만)</span>
+                            </button>
+                            <button type="button" onclick="setColor('red', '울트라 레드 (Ultra Red)', 2571000, '#b91c1c')" class="color-btn flex flex-col items-center gap-1.5 group">
+                                <span class="w-8 h-8 rounded-full bg-red-700 border border-zinc-600 color-dot shadow-md" id="dot-red"></span>
+                                <span class="text-[11px] text-zinc-400 group-hover:text-white">울트라레드 (+257.1만)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 휠 & 인테리어 옵션 (2단 나란히) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        
+                        <!-- 휠 선택 -->
+                        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                            <label class="text-xs font-bold uppercase text-zinc-400 tracking-wider block mb-3">3. 휠 (Wheels)</label>
+                            <div class="space-y-2.5">
+                                <button type="button" onclick="setWheel('19', '19인치 제미니 휠', 0)" id="btn-wheel-19" class="wheel-btn w-full p-3 rounded-xl border border-red-500 bg-zinc-800 text-left transition flex items-center justify-between active">
+                                    <div>
+                                        <div class="text-xs font-bold text-white">19인치 제미니 휠</div>
+                                        <div class="text-[11px] text-zinc-400">전비 최적화 & 승차감 우수</div>
+                                    </div>
+                                    <span class="text-xs font-semibold text-emerald-400">기본 포함</span>
+                                </button>
+                                <button type="button" onclick="setWheel('20', '20인치 인덕션 휠', 2571000)" id="btn-wheel-20" class="wheel-btn w-full p-3 rounded-xl border border-zinc-700 text-left transition flex items-center justify-between">
+                                    <div>
+                                        <div class="text-xs font-bold text-white">20인치 인덕션 휠</div>
+                                        <div class="text-[11px] text-zinc-400">스포티 매트 블랙 디자인</div>
+                                    </div>
+                                    <span class="text-xs font-semibold text-zinc-300">+257.1만 원</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 인테리어 시트 선택 -->
+                        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                            <label class="text-xs font-bold uppercase text-zinc-400 tracking-wider block mb-3">4. 인테리어 (Interior)</label>
+                            <div class="space-y-2.5">
+                                <button type="button" onclick="setInterior('black', '올 블랙 인테리어', 0)" id="btn-interior-black" class="interior-btn w-full p-3 rounded-xl border border-red-500 bg-zinc-800 text-left transition flex items-center justify-between active">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="w-4 h-4 rounded-full bg-zinc-900 border border-zinc-600 inline-block"></span>
+                                        <div>
+                                            <div class="text-xs font-bold text-white">올 블랙</div>
+                                            <div class="text-[11px] text-zinc-400">오염 관리 용이</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-semibold text-emerald-400">기본 포함</span>
+                                </button>
+                                <button type="button" onclick="setInterior('white', '블랙 & 화이트 인테리어', 1286000)" id="btn-interior-white" class="interior-btn w-full p-3 rounded-xl border border-zinc-700 text-left transition flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="w-4 h-4 rounded-full bg-white border border-zinc-300 inline-block"></span>
+                                        <div>
+                                            <div class="text-xs font-bold text-white">블랙 & 화이트</div>
+                                            <div class="text-[11px] text-zinc-400">화사한 미래지향 룩</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-semibold text-zinc-300">+128.6만 원</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 5. 자율주행 패키지 (Autopilot / FSD) -->
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                        <label class="text-xs font-bold uppercase text-zinc-400 tracking-wider block mb-3">5. 오토파일럿 & 자율주행 옵션</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button type="button" onclick="setAutopilot('basic', '기본 오토파일럿', 0)" id="btn-ap-basic" class="ap-btn p-3.5 rounded-xl border border-red-500 bg-zinc-800 text-left transition active flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-white">기본 오토파일럿</span>
+                                        <span class="text-[11px] font-semibold text-emerald-400">0원</span>
+                                    </div>
+                                    <p class="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">차선 유지 보조 및 어댑티브 크루즈 컨트롤 기본 탑재</p>
+                                </div>
+                            </button>
+                            <button type="button" onclick="setAutopilot('eap', '향상된 오토파일럿 (EAP)', 4522000)" id="btn-ap-eap" class="ap-btn p-3.5 rounded-xl border border-zinc-700 text-left transition flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-white">향상된 오토파일럿 (EAP)</span>
+                                        <span class="text-[11px] font-bold text-blue-400">+452.2만</span>
+                                    </div>
+                                    <p class="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">고속도로 자동 차선 변경, 내비게이트 온 오토파일럿, 자동 주차 & 호출</p>
+                                </div>
+                            </button>
+                            <button type="button" onclick="setAutopilot('fsd', '풀 셀프 드라이빙 (FSD)', 9043000)" id="btn-ap-fsd" class="ap-btn p-3.5 rounded-xl border border-zinc-700 text-left transition flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-white">풀 셀프 드라이빙 (FSD)</span>
+                                        <span class="text-[11px] font-bold text-purple-400">+904.3만</span>
+                                    </div>
+                                    <p class="text-[11px] text-zinc-400 mt-1.5 leading-relaxed">EAP 모든 기능 + 교통 신호 및 정지 표지판 인식 제어, 도심 자동조향 준비</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 6. 보조금 지원 지역 선택 -->
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="text-xs font-bold uppercase text-zinc-400 tracking-wider">6. 거주 지역 보조금 (국고 + 지자체)</label>
+                            <span class="text-xs text-zinc-500 font-medium">2026년 전기차 보조금 기준치 반영</span>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                            <select id="select-region" onchange="calculateTotal()" class="col-span-2 sm:col-span-4 bg-zinc-800 border border-zinc-700 text-white text-xs rounded-xl p-3 focus:outline-none focus:border-red-500">
+                                <option value="seoul">서울특별시 (국고 약 220만 + 시비 130만 = 약 350만 원)</option>
+                                <option value="gyeonggi">경기도 (수원/성남/용인 평균 약 420만 원)</option>
+                                <option value="incheon">인천광역시 (약 450만 원)</option>
+                                <option value="busan">부산광역시 (약 410만 원)</option>
+                                <option value="daegu">대구광역시 (약 400만 원)</option>
+                                <option value="daejeon">대전광역시 (약 450만 원)</option>
+                                <option value="gwangju">광주광역시 (약 470만 원)</option>
+                                <option value="sejong">세종특별자치시 (약 430만 원)</option>
+                                <option value="gangwon">강원특별자치도 (약 520만 원)</option>
+                                <option value="chungbuk">충청북도 (약 550만 원)</option>
+                                <option value="chungnam">충청남도 (약 580만 원)</option>
+                                <option value="jeonbuk">전북특별자치도 (약 560만 원)</option>
+                                <option value="jeonnam">전라남도 (약 620만 원)</option>
+                                <option value="gyeongbuk">경상북도 (울릉 등 최고 약 750만 원 / 평균 580만 원)</option>
+                                <option value="gyeongnam">경상남도 (약 600만 원)</option>
+                                <option value="jeju">제주특별자치도 (약 550만 원)</option>
+                                <option value="none">보조금 없음 (0원)</option>
+                            </select>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between text-xs text-zinc-400 bg-zinc-950/60 p-2.5 rounded-lg border border-zinc-800">
+                            <span>전기차 취득세 감면 혜택 (최대 140만 원)</span>
+                            <span class="font-bold text-emerald-400">자동 적용</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 우측: 실시간 최종 견적서 패널 (5칸) -->
+                <div class="lg:col-span-5">
+                    <div class="sticky top-24 bg-gradient-to-b from-zinc-900 to-zinc-950 border border-zinc-700/80 rounded-3xl p-6 shadow-2xl space-y-6">
+                        
+                        <!-- 요약 헤더 -->
+                        <div>
+                            <div class="text-xs font-semibold text-red-400 uppercase tracking-wider">Estimated Total</div>
+                            <h4 id="summary-trim-name" class="text-2xl font-black text-white mt-1">Model Y</h4>
+                            <p id="summary-trim-desc" class="text-xs text-zinc-400 mt-0.5">후륜구동 · 복합 400km</p>
+                        </div>
+
+                        <!-- 3D 그래픽/색상 비주얼 박스 -->
+                        <div class="relative h-44 rounded-2xl bg-gradient-to-b from-zinc-800/80 to-zinc-950 border border-zinc-800 flex flex-col items-center justify-center p-4 overflow-hidden">
+                            <div id="car-color-preview" class="w-32 h-14 rounded-2xl shadow-2xl transition-all duration-300 border border-white/20 relative flex items-center justify-center bg-white">
+                                <span class="text-[11px] font-extrabold text-black/70 tracking-tight">MODEL Y</span>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2 text-xs text-zinc-300">
+                                <span id="summary-color-tag" class="px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 text-[11px]">화이트</span>
+                                <span id="summary-wheel-tag" class="px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 text-[11px]">19인치 제미니</span>
+                                <span id="summary-interior-tag" class="px-2 py-0.5 rounded bg-zinc-800 border border-zinc-700 text-[11px]">올 블랙</span>
+                            </div>
+                        </div>
+
+                        <!-- 가격 세부 항목 내역 -->
+                        <div class="space-y-2.5 text-xs text-zinc-300 border-t border-zinc-800 pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-zinc-400">차량 기본 가격</span>
+                                <span id="price-base" class="font-bold text-white">49,990,000 원</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-zinc-400">외장 색상 옵션</span>
+                                <span id="price-color" class="font-medium text-zinc-300">0 원</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-zinc-400">휠 업그레이드</span>
+                                <span id="price-wheel" class="font-medium text-zinc-300">0 원</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-zinc-400">인테리어 시트</span>
+                                <span id="price-interior" class="font-medium text-zinc-300">0 원</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-zinc-400">자율주행 (오토파일럿)</span>
+                                <span id="price-autopilot" class="font-medium text-zinc-300">0 원</span>
+                            </div>
+                            <div class="flex justify-between items-center text-blue-400 border-t border-dashed border-zinc-800 pt-2 font-medium">
+                                <span>예상 전기차 정부/지자체 보조금</span>
+                                <span id="price-subsidy">-3,500,000 원</span>
+                            </div>
+                            <div class="flex justify-between items-center text-emerald-400 font-medium">
+                                <span>취득세 감면 혜택 (최대)</span>
+                                <span>-1,400,000 원</span>
+                            </div>
+                        </div>
+
+                        <!-- 최종 실구매 예상가 -->
+                        <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
+                            <div class="text-xs text-zinc-400">보조금 적용 후 예상 실구매가</div>
+                            <div class="flex items-baseline justify-between mt-1">
+                                <span id="price-final" class="text-3xl font-black text-white tracking-tight">46,490,000</span>
+                                <span class="text-sm font-bold text-zinc-400">원</span>
+                            </div>
+                        </div>
+
+                        <!-- 월 납입금 할부 시뮬레이션 -->
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-bold text-zinc-300">60개월 할부 시 월 예상 납입금</span>
+                                <span id="price-monthly" class="text-base font-black text-amber-400">약 84만 원</span>
+                            </div>
+                            <div class="text-[11px] text-zinc-500 leading-relaxed">
+                                * 선수금 1,000만 원 / 이자율 연 4.9% 기준 단순 예시이며 실제 금융 조건에 따라 상이할 수 있습니다.
+                            </div>
+                        </div>
+
+                        <!-- 버튼 -->
+                        <div class="pt-2">
+                            <a href="https://www.tesla.com/ko_kr/modely/design" target="_blank" class="w-full py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-black font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg transition">
+                                <span>테슬라 공식 홈페이지에서 주문하기</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. 전 차종 상세 제원 비교표 (Full Spec Table) -->
+        <section class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-6 sm:p-8">
+            <div class="mb-6">
+                <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-table-list text-blue-400"></i>
+                    모델 Y 3종 전체 공식 스펙 상세 비교표
+                </h3>
+                <p class="text-xs sm:text-sm text-zinc-400 mt-1">배터리 용량, 구동계, 충전 속도, 차체 크기, 보증 내역을 정확히 대조합니다.</p>
+            </div>
+
+            <div class="overflow-x-auto custom-scrollbar">
+                <table class="w-full text-xs sm:text-sm text-left text-zinc-300 min-w-[650px]">
+                    <thead class="bg-zinc-950 text-zinc-400 font-bold uppercase tracking-wider text-[11px] border-b border-zinc-800">
+                        <tr>
+                            <th class="py-3 px-4">구분 / 항목</th>
+                            <th class="py-3 px-4 text-white">Model Y (RWD)</th>
+                            <th class="py-3 px-4 text-red-400">Model Y Long Range (AWD)</th>
+                            <th class="py-3 px-4 text-amber-400">Model Y L (6인승 AWD)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-800/80">
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">기본 출고 가격</td>
+                            <td class="py-3 px-4 font-extrabold text-white">4,999만 원</td>
+                            <td class="py-3 px-4 font-extrabold text-red-400">6,699만 원</td>
+                            <td class="py-3 px-4 font-extrabold text-amber-400">7,299만 원</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">구동 방식</td>
+                            <td class="py-3 px-4">싱글 모터 후륜구동 (RWD)</td>
+                            <td class="py-3 px-4">듀얼 모터 상시 사륜 (AWD)</td>
+                            <td class="py-3 px-4">듀얼 모터 상시 사륜 (AWD)</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">1회 충전 복합 주행거리</td>
+                            <td class="py-3 px-4 font-bold text-white">400 km</td>
+                            <td class="py-3 px-4 font-bold text-red-400">505 km</td>
+                            <td class="py-3 px-4 font-bold text-amber-400">485 km</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">배터리 종류 & 용량</td>
+                            <td class="py-3 px-4">LFP (리튬인산철) 62.1 kWh</td>
+                            <td class="py-3 px-4">NCM (삼원계) 84.0 kWh</td>
+                            <td class="py-3 px-4">NCM (삼원계) 84.0 kWh</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">가속력 (0-100 km/h)</td>
+                            <td class="py-3 px-4">6.9 초</td>
+                            <td class="py-3 px-4 font-bold text-white">5.0 초</td>
+                            <td class="py-3 px-4 font-bold text-white">5.0 초</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">최고 속도</td>
+                            <td class="py-3 px-4">217 km/h</td>
+                            <td class="py-3 px-4">217 km/h</td>
+                            <td class="py-3 px-4">217 km/h</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">최대 급속 충전 속도</td>
+                            <td class="py-3 px-4">최대 170 kW (슈퍼차저)</td>
+                            <td class="py-3 px-4 font-bold text-emerald-400">최대 250 kW (V3 슈퍼차저)</td>
+                            <td class="py-3 px-4 font-bold text-emerald-400">최대 250 kW (V3 슈퍼차저)</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">승차 정원</td>
+                            <td class="py-3 px-4">5 인승 (2열 60:40 폴딩)</td>
+                            <td class="py-3 px-4">5 인승 (2열 60:40 폴딩)</td>
+                            <td class="py-3 px-4 font-bold text-amber-400">6 인승 (2+2+2 캡틴시트)</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">차체 전장 / 전폭 / 전고</td>
+                            <td class="py-3 px-4" colspan="3">전장 4,751mm · 전폭 1,921mm · 전고 1,624mm (축거 2,890mm)</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">최대 적재 용량</td>
+                            <td class="py-3 px-4" colspan="3">2,158 리터 (프렁크 117L 포함)</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">기본 차량 보증</td>
+                            <td class="py-3 px-4" colspan="3">4년 또는 80,000 km</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-800/40">
+                            <td class="py-3 px-4 font-semibold text-zinc-400">배터리 및 구동계 보증</td>
+                            <td class="py-3 px-4">8년 또는 160,000 km (70% 용량 보존)</td>
+                            <td class="py-3 px-4" colspan="2">8년 또는 192,000 km (70% 용량 보존)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. 유지비 & 유류비 절감 계산기 (내연기관 대비) -->
+        <section class="bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Economy & Cost Benefit</span>
+                    <h3 class="text-xl sm:text-3xl font-extrabold text-white mt-1">
+                        전기차 타면 연간 얼마를 아낄 수 있을까?
+                    </h3>
+                    <p class="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed">
+                        휘발유(연비 12km/L, 리터당 1,700원 기준) 중형 SUV 대비 테슬라 모델 Y(완속 충전 kWh당 250원 기준)를 운행할 때의 유지비 절감액을 비교합니다.
+                    </p>
+
+                    <div class="mt-6 space-y-3">
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-zinc-950/80 border border-zinc-800">
+                            <span class="text-xs text-zinc-400">연간 15,000km 주행 시 연료/충전비</span>
+                            <div class="text-right">
+                                <div class="text-xs text-zinc-500 line-through">가솔린: 약 212만 원</div>
+                                <div class="text-sm font-bold text-emerald-400">테슬라: 약 65만 원 (연 147만 원 절감)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-zinc-950/80 border border-zinc-800">
+                            <span class="text-xs text-zinc-400">연간 자동차세 비교</span>
+                            <div class="text-right">
+                                <div class="text-xs text-zinc-500 line-through">2.0L 가솔린: 약 52만 원</div>
+                                <div class="text-sm font-bold text-emerald-400">전기차 단일세율: 13만 원 (연 39만 원 절감)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800 text-center space-y-4">
+                    <div class="text-xs text-zinc-400 uppercase font-semibold">5년 운행 시 총 예상 절감 금액</div>
+                    <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                        약 930만 원+
+                    </div>
+                    <p class="text-xs text-zinc-400 max-w-sm mx-auto">
+                        고속도로 통행료 50% 할인, 공영주차장 50% 할인, 엔진오일/미션오일 교환 불필요 혜택까지 더하면 실질 절감 폭은 더 커집니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 하단 고정 플로팅 바 (모바일/PC 어디서든 즉시 견적 확인) -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 glass-panel border-t border-zinc-800 px-4 py-3 flex items-center justify-between max-w-7xl mx-auto">
+        <div class="flex items-center gap-3">
+            <div>
+                <span id="bottom-trim-label" class="text-xs font-bold text-white">Model Y RWD</span>
+                <div class="text-lg sm:text-xl font-black text-red-500" id="bottom-price-label">46,490,000 원</div>
+            </div>
+            <span class="text-[11px] text-zinc-400 hidden sm:inline">(보조금 적용 후 예상 실구매가)</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <a href="#simulator" class="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-black font-bold text-xs transition">
+                옵션 변경
+            </a>
+            <a href="https://www.tesla.com/ko_kr/modely/design" target="_blank" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-lg shadow-red-600/30 transition">
+                공식 주문
+            </a>
+        </div>
+    </div>
+
+    <!-- 인터랙티브 스크립트 로직 -->
+    <script>
+        // 기본 데이터 정의
+        const TRIMS = {
+            rwd: {
+                name: 'Model Y',
+                fullName: 'Model Y RWD (후륜구동)',
+                desc: '후륜구동 · 복합 400km · 62.1kWh LFP',
+                basePrice: 49990000,
+                subsidyRatio: 1.0 // 5,700만원 미만 100% 구간
+            },
+            longrange: {
+                name: 'Model Y Long Range',
+                fullName: 'Model Y Long Range AWD',
+                desc: '듀얼모터 사륜구동 · 복합 505km · 84kWh NCM',
+                basePrice: 66990000,
+                subsidyRatio: 0.5 // 5,700만원~8,500만원 50% 구간
+            },
+            yl: {
+                name: 'Model Y L',
+                fullName: 'Model Y L (6인승 AWD)',
+                desc: '6인승 독립 캡틴시트 · 복합 485km · 84kWh NCM',
+                basePrice: 72990000,
+                subsidyRatio: 0.5 // 50% 구간
+            }
+        };
+
+        const SUBSIDIES = {
+            seoul: 3500000,
+            gyeonggi: 4200000,
+            incheon: 4500000,
+            busan: 4100000,
+            daegu: 4000000,
+            daejeon: 4500000,
+            gwangju: 4700000,
+            sejong: 4300000,
+            gangwon: 5200000,
+            chungbuk: 5500000,
+            chungnam: 5800000,
+            jeonbuk: 5600000,
+            jeonnam: 6200000,
+            gyeongbuk: 5800000,
+            gyeongnam: 6000000,
+            jeju: 5500000,
+            none: 0
+        };
+
+        // 상태값 관리
+        let currentTrim = 'rwd';
+        let currentColor = { id: 'white', name: '펄 화이트 멀티코트', price: 0, hex: '#ffffff' };
+        let currentWheel = { id: '19', name: '19인치 제미니 휠', price: 0 };
+        let currentInterior = { id: 'black', name: '올 블랙', price: 0 };
+        let currentAutopilot = { id: 'basic', name: '기본 오토파일럿', price: 0 };
+
+        function formatKRW(num) {
+            return num.toLocaleString('ko-KR') + ' 원';
+        }
+
+        // 트림 선택
+        function setTrim(trimKey) {
+            currentTrim = trimKey;
+            document.querySelectorAll('.trim-btn').forEach(btn => {
+                btn.classList.remove('border-red-500', 'bg-zinc-800', 'active');
+                btn.classList.add('border-zinc-700');
+            });
+            const activeBtn = document.getElementById('btn-trim-' + trimKey);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-zinc-700');
+                activeBtn.classList.add('border-red-500', 'bg-zinc-800', 'active');
+            }
+            calculateTotal();
+        }
+
+        function selectTrimPreset(trimKey) {
+            setTrim(trimKey);
+            const target = document.getElementById('simulator');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 색상 선택
+        function setColor(id, name, price, hex) {
+            currentColor = { id, name, price, hex };
+            document.querySelectorAll('.color-dot').forEach(dot => dot.classList.remove('active'));
+            const activeDot = document.getElementById('dot-' + id);
+            if (activeDot) activeDot.classList.add('active');
+
+            document.getElementById('label-selected-color').innerText = name + ' (' + (price === 0 ? '기본 포함' : '+' + (price/10000).toLocaleString() + '만 원') + ')';
+            
+            // 미리보기 비주얼 박스 색상 전환
+            const previewBox = document.getElementById('car-color-preview');
+            if (previewBox) {
+                previewBox.style.backgroundColor = hex;
+                if (id === 'white' || id === 'quicksilver') {
+                    previewBox.querySelector('span').style.color = '#000000';
+                } else {
+                    previewBox.querySelector('span').style.color = '#ffffff';
+                }
+            }
+            calculateTotal();
+        }
+
+        // 휠 선택
+        function setWheel(id, name, price) {
+            currentWheel = { id, name, price };
+            document.querySelectorAll('.wheel-btn').forEach(btn => {
+                btn.classList.remove('border-red-500', 'bg-zinc-800', 'active');
+                btn.classList.add('border-zinc-700');
+            });
+            const activeBtn = document.getElementById('btn-wheel-' + id);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-zinc-700');
+                activeBtn.classList.add('border-red-500', 'bg-zinc-800', 'active');
+            }
+            calculateTotal();
+        }
+
+        // 인테리어 선택
+        function setInterior(id, name, price) {
+            currentInterior = { id, name, price };
+            document.querySelectorAll('.interior-btn').forEach(btn => {
+                btn.classList.remove('border-red-500', 'bg-zinc-800', 'active');
+                btn.classList.add('border-zinc-700');
+            });
+            const activeBtn = document.getElementById('btn-interior-' + id);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-zinc-700');
+                activeBtn.classList.add('border-red-500', 'bg-zinc-800', 'active');
+            }
+            calculateTotal();
+        }
+
+        // 오토파일럿 선택
+        function setAutopilot(id, name, price) {
+            currentAutopilot = { id, name, price };
+            document.querySelectorAll('.ap-btn').forEach(btn => {
+                btn.classList.remove('border-red-500', 'bg-zinc-800', 'active');
+                btn.classList.add('border-zinc-700');
+            });
+            const activeBtn = document.getElementById('btn-ap-' + id);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-zinc-700');
+                activeBtn.classList.add('border-red-500', 'bg-zinc-800', 'active');
+            }
+            calculateTotal();
+        }
+
+        // 최종 계산 및 화면 갱신
+        function calculateTotal() {
+            const trimData = TRIMS[currentTrim];
+            const basePrice = trimData.basePrice;
+            const optionPrice = currentColor.price + currentWheel.price + currentInterior.price + currentAutopilot.price;
+            
+            // 보조금 계산
+            const region = document.getElementById('select-region').value;
+            const fullSubsidy = SUBSIDIES[region] || 0;
+            const actualSubsidy = Math.round(fullSubsidy * trimData.subsidyRatio);
+
+            const finalPrice = basePrice + optionPrice - actualSubsidy;
+
+            // UI 업데이트
+            document.getElementById('summary-trim-name').innerText = trimData.fullName;
+            document.getElementById('summary-trim-desc').innerText = trimData.desc;
+            
+            document.getElementById('summary-color-tag').innerText = currentColor.name.split(' ')[0];
+            document.getElementById('summary-wheel-tag').innerText = currentWheel.id === '19' ? '19인치 제미니' : '20인치 인덕션';
+            document.getElementById('summary-interior-tag').innerText = currentInterior.name;
+
+            document.getElementById('price-base').innerText = formatKRW(basePrice);
+            document.getElementById('price-color').innerText = currentColor.price === 0 ? '0 원' : '+' + formatKRW(currentColor.price);
+            document.getElementById('price-wheel').innerText = currentWheel.price === 0 ? '0 원' : '+' + formatKRW(currentWheel.price);
+            document.getElementById('price-interior').innerText = currentInterior.price === 0 ? '0 원' : '+' + formatKRW(currentInterior.price);
+            document.getElementById('price-autopilot').innerText = currentAutopilot.price === 0 ? '0 원' : '+' + formatKRW(currentAutopilot.price);
+            
+            document.getElementById('price-subsidy').innerText = actualSubsidy === 0 ? '0 원' : '-' + formatKRW(actualSubsidy);
+            document.getElementById('price-final').innerText = finalPrice.toLocaleString('ko-KR');
+
+            // 하단 고정 바 업데이트
+            document.getElementById('bottom-trim-label').innerText = trimData.name;
+            document.getElementById('bottom-price-label').innerText = formatKRW(finalPrice);
+
+            // 60개월 예상 월 할부금 (선수금 1,000만원, 연 4.9% 원리금균등상환 근사치)
+            const loanPrincipal = Math.max(0, finalPrice - 10000000);
+            const monthlyRate = 0.049 / 12;
+            const months = 60;
+            const monthlyPayment = Math.round((loanPrincipal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1));
+            document.getElementById('price-monthly').innerText = '약 ' + (Math.round(monthlyPayment / 10000)).toLocaleString() + '만 원';
+        }
+
+        // 초기 실행
+        window.addEventListener('DOMContentLoaded', () => {
+            setTrim('rwd');
+        });
+    </script>
+</body>
+</html>
